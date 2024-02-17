@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    文章内容
+{% endblock %}
+
+{% block head %}
+        <link href="/markdown/markdown2.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block pageHeader %}
+    <h2 class="page-title">
+        文档内容
+    </h2>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10 col-xl-9">
+            <div class="card card-lg">
+                <div class="card-body markdown">
+                    <div class="btn-group float-end" role="group">
+                        <a href="{{ url_for('blog_controller.edit_post_page', post_id=post.id) }}"
+                           class="btn btn-dark">
+                            编辑
+                        </a>
+                        <a href="{{ url_for('blog_controller.delete_post_page', post_id=post.id) }}"
+                           onclick="return confirm('你确定要删除这篇博客吗？');"
+                           class="btn btn-danger">
+                            删除
+                        </a>
+                    </div>
+                    <h1>{{ post.title }}</h1>
+                    <p>{{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                    <div>{{ post.content|safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
