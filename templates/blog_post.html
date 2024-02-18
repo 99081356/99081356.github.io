@@ -34,6 +34,7 @@
                         </a>
                     </div>
                     <h1>{{ post.title }}</h1>
+                    <p>作者：{{ post.tags }}</p>
                     <p>{{ post.date_posted.strftime('%Y-%m-%d') }}</p>
                     <div>{{ post.content|safe }}</div>
                 </div>

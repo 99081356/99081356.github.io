@@ -28,6 +28,21 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label required">标签</label>
+                        <div>
+                            <select name="tags" multiple class="form-control">
+                                {% for tag in tags %}
+
+                                    {% if tag in post.tags %}
+                                        <option value="{{ tag.id }}" selected="selected">{{ tag.name }}</option>
+                                    {% else %}
+                                        <option value="{{ tag.id }}">{{ tag.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label required">文章内容</label>
                         <div>
                             {{ form.content(id='editor', class_='form-control',style="height: 15em;") }}
