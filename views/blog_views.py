@@ -1,4 +1,4 @@
-from flask import request, redirect, url_for, render_template, flash
+from flask import request, redirect, url_for, render_template, flash, jsonify,json
 from models.blog import Post, db, Tag
 from markdown2 import Markdown
 from flask_login import current_user, login_required
@@ -12,7 +12,24 @@ markdown_converter = Markdown()
 # 定义首页路由，展示所有博客文章
 def index():
     posts = Post.query.all()
-    return render_template('blog_index.html', posts=posts)
+    # 统计所有标签的频率
+    all_tags = [tag for post in list(posts) for tag in post.tags]
+    # 使用一个字典来存储每个标签的频率
+    tags_freq = {}
+    for tag in all_tags:
+        if tag in tags_freq:
+            tags_freq[tag] += 1
+        else:
+            tags_freq[tag] = 1
+    # 对字典进行排序，以便按频率显示标签
+    # sorted_tags = sorted(tag_freq.items(), key=lambda x: x[1], reverse=True)
+    array_tags = []
+    for tag in tags_freq:
+        tag_name = tag.name
+        tag_freq = tags_freq[tag]
+        array_tags.append({"tag_name": tag_name, "tag_freq": tag_freq})
+    json_tags = json.dumps(array_tags)
+    return render_template('blog_index.html', posts=posts, tags=json_tags)
 
 
 # 定义文章路由，根据文章id展示单篇文章
