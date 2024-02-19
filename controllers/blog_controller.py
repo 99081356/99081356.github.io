@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template
-from views.blog_views import index, post, new_post, edit_post, delete_post
+from views.blog_views import index, post, new_post, edit_post, delete_post, common_tools
 
 blog_controller = Blueprint('blog_controller', __name__)
 
@@ -37,3 +37,10 @@ def edit_post_page(post_id):
 def delete_post_page(post_id):
     # 调用delete_post函数，传入post_id
     return delete_post(post_id)
+
+
+# 定义博客首页的路由
+@blog_controller.route('/tools', methods=['GET', 'POST'])
+def tools():
+    # 调用common_tools函数
+    return common_tools()

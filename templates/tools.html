@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block pageHeader %}
+    <h2 class="page-title">
+        文件检索
+    </h2>
+{% endblock %}
+
+{% block content %}
+{#    <form method=post enctype=multipart/form-data>#}
+{#        <input type=file name=file>#}
+{#        <input type=text name=figure_number placeholder="Enter figure number to search">#}
+{#        <input type=submit value=Search>#}
+{#    </form>#}
+{#    <p>{{ message }}</p>#}
+
+    <div class="row row-cards">
+        <div class="col-md-6">
+            <form class="card" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {#                {{ csrf_token }}#}
+                <div class="card-header">
+                    <h3 class="card-title">检索内容设置</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label required">文件导入</label>
+                        <div>
+                            {{ form.file(id='file', class_='form-control') }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label required">关键词</label>
+                        <div>
+                            {{ form.key_word(id='key_word', class_='form-control',style="height: 15em;") }}
+                            <small class="form-hint">
+                                输入需要检查的关键词。
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    {{ form.submit(class_='btn btn-primary') }}
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">检查结果</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 row">
+                        <div id="message" class="markdown-body2">
+                            {% for message_content in message %}
+                                <p>{{ message_content }}</p>
+                            {% endfor %}
+                            </div>
+                    </div>
+                </div>
+                <div class="card-header">
+                    <h3 class="card-title">检查详情</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 row">
+                        <div id="details" class="markdown-body2">
+                            {% for detail_content in details %}
+                                <p>{{ detail_content }}</p>
+                            {% endfor %}
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
