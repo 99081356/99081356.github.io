@@ -1,5 +1,6 @@
 from flask import Blueprint, request, render_template
-from views.blog_views import index, post, new_post, edit_post, delete_post, common_tools
+from views.blog_views import index, post, new_post, edit_post, delete_post
+from views.common_tools import common_tools
 
 blog_controller = Blueprint('blog_controller', __name__)
 
