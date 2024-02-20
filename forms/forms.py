@@ -25,3 +25,13 @@ class checkForm(FlaskForm, CSRFProtect):
     key_word = TextAreaField('关键词', validators=[DataRequired()])
     # 定义一个submit字段，类型为SubmitField
     submit = SubmitField('提交')
+
+
+# 定义一个textCmpForm类，继承FlaskForm和CSRFProtect
+class textCmpForm(FlaskForm, CSRFProtect):
+    # 原始
+    text_orgin = TextAreaField('原始文字', validators=[DataRequired()])
+    # 对比
+    text_cmp = TextAreaField('对比文字', validators=[DataRequired()])
+    # 定义一个submit字段，类型为SubmitField
+    submit = SubmitField('提交')

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template
 from views.blog_views import index, post, new_post, edit_post, delete_post
-from views.common_tools import common_tools
+from views.common_tools import file_cmp, text_cmp
 
 blog_controller = Blueprint('blog_controller', __name__)
 
@@ -41,7 +41,13 @@ def delete_post_page(post_id):
 
 
 # 定义博客首页的路由
-@blog_controller.route('/tools', methods=['GET', 'POST'])
-def tools():
+@blog_controller.route('/file_cmp_tool', methods=['GET', 'POST'])
+def file_cmp_tool():
     # 调用common_tools函数
-    return common_tools()
+    return file_cmp()
+
+
+@blog_controller.route('/text_cmp_tool', methods=['GET', 'POST'])
+def text_cmp_tool():
+    # 调用common_tools函数
+    return text_cmp()

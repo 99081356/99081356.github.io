@@ -516,8 +516,8 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item active" href="{{ url_for('blog_controller.tools') }}">
-                                            文档检查
+                                        <a class="dropdown-item active" href="{{ url_for('blog_controller.file_cmp_tool') }}">
+                                            关键字检查
                                         </a>
 {#                                        <a class="dropdown-item" href="/templates/tabler/cookie-banner.html">#}
 {#                                            Cookie banner#}
@@ -557,8 +557,8 @@
 {#                                        </a>#}
                                     </div>
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item" href="/templates/tabler/logs.html">
-                                            其他工具（待开发）
+                                        <a class="dropdown-item" href="{{ url_for('blog_controller.text_cmp_tool') }}">
+                                            文本比较
                                             <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
                                         </a>
 {#                                        <a class="dropdown-item" href="/templates/tabler/music.html">#}

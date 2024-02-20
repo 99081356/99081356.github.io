@@ -2,14 +2,15 @@ from flask import request, redirect, url_for, render_template, flash, jsonify, j
 from models.blog import Post, db, Tag
 from markdown2 import Markdown
 from flask_login import current_user, login_required
-from forms.forms import PostForm, checkForm
+from forms.forms import PostForm, checkForm, textCmpForm
 from markdown import markdown
 import re
 from docx import Document
+from difflib import HtmlDiff
 
 
 # 定义常用工具路由
-def common_tools():
+def file_cmp():
     form = checkForm()
 
     if form.validate_on_submit():
@@ -21,11 +22,11 @@ def common_tools():
             file = form.file.data
             # if file not in request.files:
             #     # 返回首页模板，并传递消息
-            #     return render_template('tools.html', form=form, message='No file part')
+            #     return render_template('file_cmp_tool.html', form=form, message='No file part')
             # 如果文件名称为空
             if file.name == '':
                 # 返回首页模板，并传递消息
-                return render_template('tools.html', form=form, message='未上传文件！')
+                return render_template('file_cmp_tool.html', form=form, message='未上传文件！')
             # 如果文件存在
             if file:
                 # 获取要搜索的图表号
@@ -34,7 +35,7 @@ def common_tools():
                 # 如果图表号为空
                 if not figure_number_to_search:
                     # 返回首页模板，并传递消息
-                    return render_template('tools.html', form=form, message='请输入需要检索的词！')
+                    return render_template('file_cmp_tool.html', form=form, message='请输入需要检索的词！')
                 # 创建文档对象
                 doc = Document(file)
                 message = []
@@ -72,9 +73,9 @@ def common_tools():
                 else:
                     message.append(f"结论：说明书附图和附图中的图号无法一一对应，存在问题的附图图号为:'{results}'！")
                     # 返回首页模板，并传递消息
-                return render_template('tools.html', form=form, message=message, details=details, title='常用工具')
-    return render_template('tools.html', form=form, title='常用工具')
-
+                return render_template('file_cmp_tool.html', form=form, message=message, details=details,
+                                       title='常用工具')
+    return render_template('file_cmp_tool.html', form=form, title='常用工具')
 
 
 # import fitz  # PyMuPDF
@@ -131,3 +132,19 @@ def common_tools():
 # # # 保存修改后的PDF文件
 # # pdf_document.saveIncr()
 # # pdf_document.close()
+
+
+def text_cmp():
+    form = textCmpForm()
+    diff_result = None
+    if form.validate_on_submit():
+        # 创建一篇文章
+        if request.method == 'POST':
+            # 获取原始文本
+            text_orgin = form.text_orgin.data
+            # 获取对比文本
+            text_cmp = form.text_cmp.data
+            diff_result = HtmlDiff().make_file(text_orgin.splitlines(), text_cmp.splitlines(), context=True)
+            # 如果原始文本与对比文本不一致
+            return render_template('text_cmp_tool.html', diff_result=diff_result, form=form)
+    return render_template('text_cmp_tool.html', diff_result=diff_result, form=form)
