@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block head %}
+    <link href="/static/markdown/markdown2.css" rel="stylesheet"/>
+{% endblock %}
+{% block pageHeader %}
+    <h2 class="page-title">
+        文件检索
+    </h2>
+{% endblock %}
+
+{% block content %}
+    {#    <form method=post enctype=multipart/form-data>#}
+    {#        <input type=file name=file>#}
+    {#        <input type=text name=figure_number placeholder="Enter figure number to search">#}
+    {#        <input type=submit value=Search>#}
+    {#    </form>#}
+    {#    <p>{{ message }}</p>#}
+
+    <div class="row row-cards">
+        <div class="col-md-6">
+            <form class="card" method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {#                {{ csrf_token }}#}
+                <div class="card-header">
+                    <h3 class="card-title">检索内容设置</h3>
+                </div>
+                <div class="card-body">
+                    {#                    <div class="mb-3">#}
+                    {#                        <label class="form-label required">word文件导入</label>#}
+                    {#                        <div>#}
+                    {#                            {{ form.file(id='file', class_='form-control') }}#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="mb-3">#}
+                    {#                        <label class="form-label required">pdf文件导入</label>#}
+                    {#                        <div>#}
+                    {#                            {{ form.file(id='file', class_='form-control') }}#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    <div class="mb-3">
+                        <label class="form-label required">待检查文本</label>
+                        <div>
+                            {{ form.text_to_check(id='text_to_check', class_='form-control',style="height: 15em;") }}
+                            <small class="form-hint">
+                                支持匹配“图1、图 1、图1-1、图 1-1、图1a、图 1a”这些类型的附图
+                            </small>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label required">关键词</label>
+                        <div>
+                            {{ form.key_words(id='key_words', class_='form-control',style="height: 15em;") }}
+                            <small class="form-hint">
+                                输入需要检查的关键词。
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    {{ form.submit(class_='btn btn-primary') }}
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">检查结果</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 row">
+                        <div id="message">
+                            {#                            {% for message_content in message %}#}
+                            <p>{{ message|safe }}</p>
+                            {#                            {% endfor %}#}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-header">
+                    <h3 class="card-title">说明书存在问题</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 row">
+                        <div id="highlightedText" class="body-control">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="highlightKeywords({{ content_matches }})">高亮说明书问题附图</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+    function highlightKeywords(keywords) {
+        if (keywords.length === 0) {
+            // 如果关键词数组为空，则不执行高亮
+            return;
+        }
+
+        var textarea = document.getElementById("text_to_check");
+        var text = textarea.value;
+        var lines = text.split('\n'); // 按换行符分割文本
+        var highlightedText = lines.map(function(line) {
+            var regexPattern = keywords.map(escapeRegExp).join('|'); // 构建正则表达式模式
+            var regex = new RegExp('(' + regexPattern + ')', 'gi');
+            return line.replace(regex, function(match) {
+                return '<span class="highlight">' + match + '</span>';
+            });
+        }).join('<br>');
+        // 将处理后的文本设置到显示元素
+        var displayArea = document.getElementById("highlightedText");
+        displayArea.innerHTML = highlightedText;
+    }
+    function escapeRegExp(string) {
+        // 用于构建正则表达式模式时转义特殊字符
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+</script>
+
+{% endblock %}

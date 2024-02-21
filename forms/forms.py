@@ -19,10 +19,14 @@ class PostForm(FlaskForm, CSRFProtect):
 
 # 定义一个checkForm类，继承FlaskForm和CSRFProtect
 class checkForm(FlaskForm, CSRFProtect):
-    # 定义一个title字段，类型为StringField，必填
-    file = FileField('文件', validators=[DataRequired()])
+    # # 定义wor文件输入框
+    # word_file = FileField('wor文件')
+    # # 定义pdf文件输入框
+    # pdf_file = FileField('pdf文件')
+    # 定义文本输入框
+    text_to_check = TextAreaField('待检查文本', validators=[DataRequired()])
     # 定义一个content字段，类型为TextAreaField，必填
-    key_word = TextAreaField('关键词', validators=[DataRequired()])
+    key_words = TextAreaField('关键词', validators=[DataRequired()])
     # 定义一个submit字段，类型为SubmitField
     submit = SubmitField('提交')
 

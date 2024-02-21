@@ -7,3 +7,13 @@
     white-space: pre-wrap; /* 保持换行和空格 */
     word-break: break-all;
 }
+
+.body-control {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    height: 32em; /* 设置固定的高度 */
+    overflow-y: auto; /* 如果内容超出容器高度，则添加垂直滚动条 */
+    white-space: pre-wrap; /* 保持换行和空格 */
+    word-break: break-all;
+}
