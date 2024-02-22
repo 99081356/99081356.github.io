@@ -7,6 +7,7 @@ from markdown import markdown
 import re
 from docx import Document
 from difflib import HtmlDiff
+from bs4 import BeautifulSoup
 
 
 def key_word_check():
@@ -42,7 +43,7 @@ def key_word_check():
         else:
             message.append("结论：说明书和附图中的图号一一对应！")
         return render_template('keyword_check_tool.html', form=form, message=message,
-                                   content_matches=content_matches, no_matches=no_matches, title='常用工具')
+                               content_matches=content_matches, no_matches=no_matches, title='常用工具')
     return render_template('keyword_check_tool.html', form=form, title='常用工具')
 
 
@@ -182,6 +183,13 @@ def text_cmp():
             # 获取对比文本
             text_cmp = form.text_cmp.data
             diff_result = HtmlDiff().make_file(text_orgin.splitlines(), text_cmp.splitlines(), context=True)
+            soup = BeautifulSoup(diff_result, 'html.parser')
             # 如果原始文本与对比文本不一致
-            return render_template('text_cmp_tool.html', diff_result=diff_result, form=form)
+            # 移除所有 <td> 标签的 nowrap 属性
+            for td in soup.find_all('td'):
+                if 'nowrap' in td.attrs:
+                    del td['nowrap']
+            # 输出修改后的 HTML
+            modified_html = str(soup)
+            return render_template('text_cmp_tool.html', diff_result=modified_html, form=form)
     return render_template('text_cmp_tool.html', diff_result=diff_result, form=form)
