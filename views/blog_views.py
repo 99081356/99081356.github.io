@@ -6,6 +6,7 @@ from forms.forms import PostForm, checkForm
 from markdown import markdown
 import re
 from docx import Document
+from flask_paginate import Pagination, get_page_parameter
 
 # 创建Markdown对象
 markdown_converter = Markdown()
@@ -13,10 +14,20 @@ markdown_converter = Markdown()
 
 # 定义首页路由，展示所有博客文章
 def index():
-    posts = Post.query.all()
+    per_page = 10   # 每页显示10条记录
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    start = (page - 1) * per_page
+    end = start + per_page
+
+    get_posts = Post.query.all()
+    posts = get_posts[start:end]
+    # 计算总页数
+    total = len(get_posts)
+    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+    # return render_template('index.html', data=current_data, pagination=pagination, page=page)
     # 统计所有标签的频率
     all_tags = [tag for post in list(posts) for tag in post.tags]
-    # 使用一个字典来存储每个标签的频率
+    # 使用字典来存储每个标签的频率
     tags_freq = {}
     for tag in all_tags:
         if tag in tags_freq:
@@ -31,7 +42,7 @@ def index():
         tag_freq = tags_freq[tag]
         array_tags.append({"tag_name": tag_name, "tag_freq": tag_freq})
     json_tags = json.dumps(array_tags)
-    return render_template('blog_index.html', posts=posts, tags=json_tags)
+    return render_template('blog_index.html', posts=posts, tags=json_tags, pagination=pagination, page=page)
 
 
 # 定义文章路由，根据文章id展示单篇文章

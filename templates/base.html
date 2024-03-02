@@ -40,6 +40,8 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    {% block css %}
+    {% endblock %}
 </head>
 <body>
 <script src="/static/tabler/dist/js/demo-theme.min.js?1692870487"></script>
@@ -516,87 +518,88 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-menu-columns">
                                     <div class="dropdown-menu-column">
-                                        <a class="dropdown-item active" href="{{ url_for('blog_controller.keyword_check_tool') }}">
+                                        <a class="dropdown-item active"
+                                           href="{{ url_for('blog_controller.keyword_check_tool') }}">
                                             关键字检查
                                         </a>
-{#                                        <a class="dropdown-item" href="/templates/tabler/cookie-banner.html">#}
-{#                                            Cookie banner#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/chat.html">#}
-{#                                            Chat#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/activity.html">#}
-{#                                            Activity#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/gallery.html">#}
-{#                                            Gallery#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/invoice.html">#}
-{#                                            Invoice#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/search-results.html">#}
-{#                                            Search results#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/pricing.html">#}
-{#                                            Pricing cards#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/pricing-table.html">#}
-{#                                            Pricing table#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/faq.html">#}
-{#                                            FAQ#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/users.html">#}
-{#                                            Users#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/license.html">#}
-{#                                            License#}
-{#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/cookie-banner.html">#}
+                                        {#                                            Cookie banner#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/chat.html">#}
+                                        {#                                            Chat#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/activity.html">#}
+                                        {#                                            Activity#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/gallery.html">#}
+                                        {#                                            Gallery#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/invoice.html">#}
+                                        {#                                            Invoice#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/search-results.html">#}
+                                        {#                                            Search results#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/pricing.html">#}
+                                        {#                                            Pricing cards#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/pricing-table.html">#}
+                                        {#                                            Pricing table#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/faq.html">#}
+                                        {#                                            FAQ#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/users.html">#}
+                                        {#                                            Users#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/license.html">#}
+                                        {#                                            License#}
+                                        {#                                        </a>#}
                                     </div>
                                     <div class="dropdown-menu-column">
                                         <a class="dropdown-item" href="{{ url_for('blog_controller.text_cmp_tool') }}">
                                             文本比较
                                             <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
                                         </a>
-{#                                        <a class="dropdown-item" href="/templates/tabler/music.html">#}
-{#                                            Music#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/photogrid.html">#}
-{#                                            Photogrid#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/tasks.html">#}
-{#                                            Tasks#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/uptime.html">#}
-{#                                            Uptime monitor#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/widgets.html">#}
-{#                                            Widgets#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/wizard.html">#}
-{#                                            Wizard#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/settings.html">#}
-{#                                            Settings#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/trial-ended.html">#}
-{#                                            Trial ended#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/job-listing.html">#}
-{#                                            Job listing#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
-{#                                        <a class="dropdown-item" href="/templates/tabler/page-loader.html">#}
-{#                                            Page loader#}
-{#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/music.html">#}
+                                        {#                                            Music#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/photogrid.html">#}
+                                        {#                                            Photogrid#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/tasks.html">#}
+                                        {#                                            Tasks#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/uptime.html">#}
+                                        {#                                            Uptime monitor#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/widgets.html">#}
+                                        {#                                            Widgets#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/wizard.html">#}
+                                        {#                                            Wizard#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/settings.html">#}
+                                        {#                                            Settings#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/trial-ended.html">#}
+                                        {#                                            Trial ended#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/job-listing.html">#}
+                                        {#                                            Job listing#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
+                                        {#                                        <a class="dropdown-item" href="/templates/tabler/page-loader.html">#}
+                                        {#                                            Page loader#}
+                                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                        </a>#}
                                     </div>
                                 </div>
                             </div>
@@ -829,5 +832,7 @@
 <!-- Tabler Core -->
 <script src="/static/tabler/dist/js/tabler.min.js?1692870487" defer></script>
 <script src="/static/tabler/dist/js/demo.min.js?1692870487" defer></script>
+{% block js %}
+{% endblock %}
 </body>
 </html>
