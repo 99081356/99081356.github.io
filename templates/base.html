@@ -485,7 +485,7 @@
                         {#                                </div>#}
                         {#                            </div>#}
                         {#                        </li>#}
-                        <li class="nav-item">
+                        <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ url_for('blog_controller.new_post_page') }}">
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -604,72 +604,72 @@
                                 </div>
                             </div>
                         </li>
-                        {#                        <li class="nav-item dropdown">#}
-                        {#                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"#}
-                        {#                               data-bs-auto-close="outside" role="button" aria-expanded="false">#}
-                        {#                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->#}
-                        {#                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"#}
-                        {#                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"#}
-                        {#                           stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path#}
-                        {#                              d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path#}
-                        {#                              d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path#}
-                        {#                              d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path#}
-                        {#                              d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/></svg>#}
-                        {#                    </span>#}
-                        {#                                <span class="nav-link-title">#}
-                        {#                      Layout#}
-                        {#                    </span>#}
-                        {#                            </a>#}
-                        {#                            <div class="dropdown-menu">#}
-                        {#                                <div class="dropdown-menu-columns">#}
-                        {#                                    <div class="dropdown-menu-column">#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-horizontal.html">#}
-                        {#                                            Horizontal#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-boxed.html">#}
-                        {#                                            Boxed#}
-                        {#                                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-vertical.html">#}
-                        {#                                            Vertical#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item"#}
-                        {#                                           href="/templates/tabler/layout-vertical-transparent.html">#}
-                        {#                                            Vertical transparent#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-vertical-right.html">#}
-                        {#                                            Right vertical#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-condensed.html">#}
-                        {#                                            Condensed#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-combo.html">#}
-                        {#                                            Combined#}
-                        {#                                        </a>#}
-                        {#                                    </div>#}
-                        {#                                    <div class="dropdown-menu-column">#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-navbar-dark.html">#}
-                        {#                                            Navbar dark#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-navbar-sticky.html">#}
-                        {#                                            Navbar sticky#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-navbar-overlap.html">#}
-                        {#                                            Navbar overlap#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-rtl.html">#}
-                        {#                                            RTL mode#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-fluid.html">#}
-                        {#                                            Fluid#}
-                        {#                                        </a>#}
-                        {#                                        <a class="dropdown-item" href="/templates/tabler/layout-fluid-vertical.html">#}
-                        {#                                            Fluid vertical#}
-                        {#                                        </a>#}
-                        {#                                    </div>#}
-                        {#                                </div>#}
-                        {#                            </div>#}
-                        {#                        </li>#}
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
+                                                       data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
+                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                                                   stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                                   stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                                      d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
+                                                      d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
+                                                      d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
+                                                      d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/></svg>
+                                            </span>
+                                                        <span class="nav-link-title">
+                                              管理
+                                            </span>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <div class="dropdown-menu-columns">
+                                                            <div class="dropdown-menu-column">
+                                                                <a class="dropdown-item" href="#">
+                                                                    用户管理
+                                                                </a>
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-boxed.html">#}
+{#                                                                    Boxed#}
+{#                                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical.html">#}
+{#                                                                    Vertical#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item"#}
+{#                                                                   href="/templates/tabler/layout-vertical-transparent.html">#}
+{#                                                                    Vertical transparent#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical-right.html">#}
+{#                                                                    Right vertical#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-condensed.html">#}
+{#                                                                    Condensed#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-combo.html">#}
+{#                                                                    Combined#}
+{#                                                                </a>#}
+                                                            </div>
+                                                            <div class="dropdown-menu-column">
+                                                                <a class="dropdown-item" href="{{ url_for('blog_controller.tags_show_page') }}">
+                                                                    标签管理
+                                                                </a>
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-sticky.html">#}
+{#                                                                    Navbar sticky#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-overlap.html">#}
+{#                                                                    Navbar overlap#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-rtl.html">#}
+{#                                                                    RTL mode#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid.html">#}
+{#                                                                    Fluid#}
+{#                                                                </a>#}
+{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid-vertical.html">#}
+{#                                                                    Fluid vertical#}
+{#                                                                </a>#}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
                         {#                        <li class="nav-item">#}
                         {#                            <a class="nav-link" href="/templates/tabler/icons.html">#}
                         {#                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/ghost -->#}

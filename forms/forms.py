@@ -1,8 +1,6 @@
 from flask_wtf import FlaskForm, CSRFProtect
-from wtforms import StringField, TextAreaField, SubmitField, FileField
+from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
-from flask_flatpages import FlatPages
-from markdown import markdown
 
 
 # 定义一个PostForm类，继承FlaskForm和CSRFProtect
@@ -37,5 +35,12 @@ class textCmpForm(FlaskForm, CSRFProtect):
     text_orgin = TextAreaField('原始文字', validators=[DataRequired()])
     # 对比
     text_cmp = TextAreaField('对比文字', validators=[DataRequired()])
+    # 定义一个submit字段，类型为SubmitField
+    submit = SubmitField('提交')
+
+# 定义标签Form类，继承FlaskForm和CSRFProtect
+class TagForm(FlaskForm, CSRFProtect):
+    # 定义一个title字段，类型为StringField，必填
+    name = StringField('标签名称', validators=[DataRequired()])
     # 定义一个submit字段，类型为SubmitField
     submit = SubmitField('提交')

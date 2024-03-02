@@ -102,7 +102,7 @@ def edit_post(post_id):
             post.tags.append(tag)
             # 更新数据库
             db.session.commit()
-
+        db.session.commit()
         # 提示信息
         flash('你的博客已更新！')
         # 重定向到首页

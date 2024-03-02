@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block pageHeader %}
+
+            <h2 class="page-title">标签列表 <a href="{{ url_for('blog_controller.new_tag_page') }}" class="btn btn-blue" style="margin-left: 89%">新增</a></h2>
+
+
+{% endblock %}
+
+{% block css %}
+    <style>
+        .sr-only {
+            display: none;
+        }
+
+        /* 调整分页组件的整体样式 */
+        .pagination {
+            margin-top: 10px; /* 在分页组件上方添加一些空间 */
+        }
+
+        /* 调整每个页码按钮的样式 */
+        .pagination .page-item .page-link {
+            padding: 5px 10px; /* 调整按钮的内边距 */
+            font-size: 16px; /* 调整按钮的文字大小 */
+            border-radius: 4px; /* 调整按钮的边框半径 */
+        }
+
+        /* 调整跳转框的样式 */
+        .page-input {
+            width: 60px;
+            height: 40px;
+            margin-top: 5px;
+            margin-inline: 5px;
+        }
+
+        /* 调整跳转按钮的样式 */
+        .page-jump {
+            width: 60px;
+            height: 40px;
+            margin-top: 5px;
+            margin-inline: 5px;
+        }
+
+        /* 设置placeholder文本的样式 */
+        .page-input::placeholder {
+            text-align: center; /* 使placeholder文本居中 */
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row row-cards">
+        <div class="col-12">
+            <div class="card">
+                <div class="table-responsive">
+
+                    <table
+                            class="table table-vcenter card-table table-striped">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>标签名称</th>
+                            <th class="w-8">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for tag in tags %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td class="text-secondary">
+                                    <a href="{{ url_for('blog_controller.tags_show_page', tag_id=tag.id) }}">{{ tag.name }}</a>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ url_for('blog_controller.edit_tag_page', tag_id=tag.id) }}"
+                                           class="btn btn-dark">
+                                            编辑
+                                        </a>
+                                        <a href="{{ url_for('blog_controller.delete_tag_page', tag_id=tag.id) }}"
+                                           onclick="return confirm('你确定要删除该标签吗？');"
+                                           class="btn btn-danger">
+                                            删除
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ pagination.links }}
+            {% if pagination.total_pages > 1 %}
+                <input type="text" class="form-control page-input" placeholder="页码">
+                <button class="btn btn-primary page-jump">跳转</button>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="/static/jQuery/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.page-jump').click(function () {
+                var page = $('.page-input').val();
+                var maxPage = {{ pagination.total_pages }};
+                if ($.isNumeric(page) && page > 0 && page <= maxPage) {
+                    window.location.href = window.location.pathname + '?page=' + page;
+                } else {
+                    alert('请输入正确的页码！');
+                }
+            });
+        });
+    </script>
+{% endblock %}

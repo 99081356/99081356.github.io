@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    编辑标签
+{% endblock %}
+{% block pageHeader %}
+    <h2 class="page-title">
+        编辑标签
+    </h2>
+{% endblock %}
+{% block content %}
+    <div class="row row-cards">
+        <div class="col-md-6">
+            <form class="card" method="post">
+                {{ form.hidden_tag() }}
+                {#                {{ csrf_token }}#}
+                <div class="card-header">
+                    <h3 class="card-title">标签编辑</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label required">标签名称</label>
+                        <div>
+                            {{ form.name(class_='form-control') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    {{ form.submit(class_='btn btn-primary') }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

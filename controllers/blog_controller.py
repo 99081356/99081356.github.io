@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template
 from views.blog_views import index, post, new_post, edit_post, delete_post
 from views.common_tools import key_word_check, text_cmp
+from views.tag_control import tags_show,new_tag, edit_tag, delete_tag
 
 blog_controller = Blueprint('blog_controller', __name__)
 
@@ -51,3 +52,30 @@ def keyword_check_tool():
 def text_cmp_tool():
     # 调用common_tools函数
     return text_cmp()
+
+
+@blog_controller.route('/tags_show', methods=['GET', 'POST'])
+def tags_show_page():
+    # 调用common_tools函数
+    return tags_show()
+
+# 定义编辑文章页的路由，支持GET和POST请求，post_id为文章的id
+@blog_controller.route('/new_tag', methods=['GET', 'POST'])
+def new_tag_page():
+    # 调用edit_post函数，传入post_id
+    return new_tag()
+
+
+
+# 定义编辑文章页的路由，支持GET和POST请求，post_id为文章的id
+@blog_controller.route('/edit_tag/<int:tag_id>', methods=['GET', 'POST'])
+def edit_tag_page(tag_id):
+    # 调用edit_post函数，传入post_id
+    return edit_tag(tag_id)
+
+
+# 定义删除文章页的路由，支持GET和POST请求，post_id为文章的id
+@blog_controller.route('/delete_tag/<int:tag_id>', methods=['GET', 'POST'])
+def delete_tag_page(tag_id):
+    # 调用delete_post函数，传入post_id
+    return delete_tag(tag_id)
