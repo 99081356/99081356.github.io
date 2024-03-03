@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from markdown2 import Markdown
 from flask_wtf import CSRFProtect
 import os
+from es.es import sync_data_to_es
 
 # 创建Flask应用
 app = Flask(__name__)
