@@ -1,6 +1,8 @@
 from elasticsearch import Elasticsearch
 
 from models.blog import Post
+from forms.forms import SearchForm
+from flask import request,jsonify
 
 es = Elasticsearch(
     [{"host": "localhost", "port": 9200, "scheme": "http"}],
@@ -16,13 +18,13 @@ def sync_data_to_es():
         es.indices.create(index=index_name, mappings={
             "properties": {
                 "title": {"type": "text",
-                          "analyzer": "ik_max_word",
-                          "search_analyzer": "ik_max_word",
+                          "analyzer": "standard",
+                          "search_analyzer": "whitespace",
                           "fielddata": True},
                 "content": {"type": "text",
-                          "analyzer": "ik_max_word",
-                          "search_analyzer": "ik_max_word",
-                          "fielddata": True},
+                            "analyzer": "standard",
+                            "search_analyzer": "whitespace",
+                            "fielddata": True},
                 "date_posted": {"type": "date"},
                 "update_at": {"type": "date"}
             }
@@ -39,13 +41,26 @@ def sync_data_to_es():
 
 
 def search():
-    query = '语法'
-    results = es.search(index=index_name, body={
-        "query": {
-            "multi_match": {
-                "query": query,
-                "fields": ["title", "content"]
+    query = request.args.get('query')
+    if query:
+        results = es.search(index=index_name, body={
+            "query": {
+                "multi_match": {
+                    "query": query,
+                    "fields": ["title", "content"]
+                }
+            },
+            "highlight": {
+                "fields": {
+                    "title": {
+                        "fragment_size": 100,
+                        "number_of_fragments": 1
+                    },
+                    "content": {
+                        "fragment_size": 100,
+                        "number_of_fragments": 1
+                    }
+                }
             }
-        }
-    })
-    return results['hits']['hits'][0]['_source']['content']
+        })
+        return results['hits']['hits']

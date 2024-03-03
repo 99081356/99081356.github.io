@@ -44,3 +44,10 @@ class TagForm(FlaskForm, CSRFProtect):
     name = StringField('标签名称', validators=[DataRequired()])
     # 定义一个submit字段，类型为SubmitField
     submit = SubmitField('提交')
+
+
+class SearchForm(FlaskForm, CSRFProtect):
+    # 定义一个title字段，类型为StringField，必填
+    keyword = StringField('关键词', validators=[DataRequired()])
+    # 定义一个submit字段，类型为SubmitField
+    submit = SubmitField('搜索')

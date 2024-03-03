@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template
 from views.blog_views import index, post, new_post, edit_post, delete_post
 from views.common_tools import key_word_check, text_cmp
 from views.tag_control import tags_show,new_tag, edit_tag, delete_tag
+from es.es import search
 
 blog_controller = Blueprint('blog_controller', __name__)
 
@@ -79,3 +80,9 @@ def edit_tag_page(tag_id):
 def delete_tag_page(tag_id):
     # 调用delete_post函数，传入post_id
     return delete_tag(tag_id)
+
+
+@blog_controller.route('/search', methods=['GET', 'POST'])
+def es_search():
+    # 调用new_post函数
+    return search()

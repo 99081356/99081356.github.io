@@ -3,7 +3,7 @@ from flask_paginate import Pagination, get_page_parameter
 from markdown2 import Markdown
 
 from es.es import sync_data_to_es, search
-from forms.forms import PostForm
+from forms.forms import PostForm, SearchForm
 from models.blog import Post, db, Tag
 
 # 创建Markdown对象
@@ -13,7 +13,6 @@ markdown_converter = Markdown()
 # 定义首页路由，展示所有博客文章
 def index():
     sync_data_to_es()
-    search_result = search()
     per_page = 10  # 每页显示10条记录
     page = request.args.get(get_page_parameter(), type=int, default=1)
     start = (page - 1) * per_page
@@ -42,8 +41,7 @@ def index():
         tag_freq = tags_freq[tag]
         array_tags.append({"tag_name": tag_name, "tag_freq": tag_freq})
     json_tags = json.dumps(array_tags)
-    return render_template('blog_index.html', posts=posts, tags=json_tags, pagination=pagination, page=page,
-                           search=search_result)
+    return render_template('blog_index.html', posts=posts, tags=json_tags, pagination=pagination, page=page)
 
 
 # 定义文章路由，根据文章id展示单篇文章
