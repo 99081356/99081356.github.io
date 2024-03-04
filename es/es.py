@@ -3,7 +3,6 @@ from elasticsearch import Elasticsearch
 from models.blog import Post
 from forms.forms import SearchForm
 from flask import request, jsonify
-from elasticsearch_dsl import Index
 
 es = Elasticsearch(
     [{"host": "localhost", "port": 9200, "scheme": "http"}],
@@ -72,11 +71,11 @@ def search():
                 "fields": {
                     "title": {
                         "fragment_size": 100,
-                        "number_of_fragments": 1
+                        "number_of_fragments": 50
                     },
                     "content": {
-                        "fragment_size": 300,
-                        "number_of_fragments": 100
+                        "fragment_size": 100,
+                        "number_of_fragments": 50
                     },
                     "tags": {
                         "fragment_size": 100,

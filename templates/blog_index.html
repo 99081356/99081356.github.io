@@ -51,12 +51,12 @@
 
 {% block content %}
 
-    <div class="col-12" style="margin-bottom: 10px">
-        <div class="card-header">
-            <input type="text" id="search-input" class="form-control" placeholder="请输入搜索内容...">
-            <button id="search-btn" class="btn btn-primary" style="margin-left: 5px">搜索</button>
-        </div>
-    </div>
+{#    <div class="col-12" style="margin-bottom: 10px">#}
+{#        <div class="card-header">#}
+{#            <input type="text" id="search-input" class="form-control" placeholder="请输入搜索内容...">#}
+{#            <button id="search-btn" class="btn btn-primary" style="margin-left: 5px">搜索</button>#}
+{#        </div>#}
+{#    </div>#}
     <div class="col-12">
         <div class="card-body markdown">
             <div id="searchResults">
@@ -136,8 +136,6 @@
     </div>
 {% endblock %}
 {% block js %}
-    <script src="/static/jQuery/jquery-3.7.0.js"></script>
-    <script src="/static/marked/marked.min.js"></script>
     <script>
         function generateTagCloud(tags) {
             const width = 960, height = 480;
@@ -179,13 +177,6 @@
                     });
             }
         }
-
-        {#const tags = [#}
-        {#    {tag_name: "阿里云", tag_freq: 100},#}
-        {#    {tag_name: "pycharm", tag_freq: 20},#}
-        {#    // ...#}
-        {#];#}
-
         const jsonString = document.getElementById('tagcloud').getAttribute('data-tags');
         const tags = JSON.parse(jsonString);
         generateTagCloud(tags);
@@ -201,76 +192,6 @@
                     alert('请输入正确的页码！');
                 }
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#search-btn').click(function () {
-                var query = $('#search-input').val();
-                $.ajax({
-                    url: '/search',
-                    type: 'GET',
-                    data: {query: query},
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#searchResults').empty(); // 清空当前搜索结果
-                        // 创建新的 HTML 元素并填充数据
-                        var card = $('<div>').addClass('card');
-
-                        if (data.length > 0) {
-                            if ('title' in data[0]['highlight']) {
-                                var title = data[0]['highlight']['title'][0];
-                                var markdownTitle = marked.parse(title); // 使用 marked 转换标题
-                                card.append($('<h1>').addClass('card-title').html('标题：'))
-                                card.append($('<h5>').addClass('card-title').html(markdownTitle),)
-                            }
-                            if ('content' in data[0]['highlight']) {
-                                var content = data[0]['highlight']['content'][0];
-                                var markdownContent = marked.parse(content); // 使用 marked 转换标题
-                                card.append($('<h1>').addClass('card-title').html('内容：'))
-                                card.append($('<p>').addClass('card-title').html(markdownContent),)
-                            }
-                            if ('tags' in data[0]['highlight']) {
-                                var tags = data[0]['highlight']['tags'][0];
-                                var markdownTags = marked.parse(tags); // 使用 marked 转换标题
-                                card.append($('<h1>').addClass('card-title').html('标签：'))
-                                card.append($('<p>').addClass('card-title').html(markdownTags))
-                            }
-                            // 将新创建的卡片元素添加到 searchResults div 中
-                            $('#searchResults').append(card);
-                        } else {
-                            alert('没有搜索到数据！')
-                        }
-
-                    },
-                    error: function (xhr, status, error) {
-                        console.error('AJAX Error: ', status, error);
-                    }
-                });
-            });
-        });
-
-    </script>
-    <script>
-        // 获取搜索框和搜索按钮的DOM元素
-        const searchInput = document.getElementById('search-input');
-        const searchButton = document.getElementById('search-btn');
-        // 监听搜索框的keydown事件
-        searchInput.addEventListener('keydown', function(event) {
-            // 检查按下的是否是回车键（keyCode 13）
-            if (event.keyCode === 13) {
-                // 阻止默认的表单提交事件
-                event.preventDefault();
-                // 触发搜索按钮的点击事件
-                searchButton.click();
-            }
-        });
-        // 监听搜索按钮的点击事件
-        searchButton.addEventListener('click', function() {
-            // 执行搜索操作，例如：
-            const searchTerm = searchInput.value;
-            console.log('搜索内容：', searchTerm);
-            // 在这里可以添加发送请求到后端或进行其他操作的代码
         });
     </script>
 {% endblock %}

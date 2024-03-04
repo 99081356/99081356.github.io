@@ -255,7 +255,7 @@
                 <div class="container-xl">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('blog_controller.blog_index') }}"">
+                            <a class="nav-link" href="{{ url_for('blog_controller.blog_index') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -263,7 +263,7 @@
                               d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path
                               d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg>
                     </span>
-                            <span class="nav-link-title">
+                                <span class="nav-link-title">
                       首页
                     </span>
                             </a>
@@ -604,72 +604,75 @@
                                 </div>
                             </div>
                         </li>
-                                                <li class="nav-item dropdown">
-                                                    <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
-                                                       data-bs-auto-close="outside" role="button" aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
+                               data-bs-auto-close="outside" role="button" aria-expanded="false">
                                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                                                   stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                                   stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
+                                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
+                                                   height="24" viewBox="0 0 24 24"
+                                                   stroke-width="2" stroke="currentColor" fill="none"
+                                                   stroke-linecap="round"
+                                                   stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"
+                                                                                 fill="none"/><path
                                                       d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
                                                       d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
                                                       d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path
                                                       d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/></svg>
                                             </span>
-                                                        <span class="nav-link-title">
+                                <span class="nav-link-title">
                                               管理
                                             </span>
-                                                    </a>
-                                                    <div class="dropdown-menu">
-                                                        <div class="dropdown-menu-columns">
-                                                            <div class="dropdown-menu-column">
-                                                                <a class="dropdown-item" href="#">
-                                                                    用户管理
-                                                                </a>
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-boxed.html">#}
-{#                                                                    Boxed#}
-{#                                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical.html">#}
-{#                                                                    Vertical#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item"#}
-{#                                                                   href="/templates/tabler/layout-vertical-transparent.html">#}
-{#                                                                    Vertical transparent#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical-right.html">#}
-{#                                                                    Right vertical#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-condensed.html">#}
-{#                                                                    Condensed#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-combo.html">#}
-{#                                                                    Combined#}
-{#                                                                </a>#}
-                                                            </div>
-                                                            <div class="dropdown-menu-column">
-                                                                <a class="dropdown-item" href="{{ url_for('blog_controller.tags_show_page') }}">
-                                                                    标签管理
-                                                                </a>
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-sticky.html">#}
-{#                                                                    Navbar sticky#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-overlap.html">#}
-{#                                                                    Navbar overlap#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-rtl.html">#}
-{#                                                                    RTL mode#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid.html">#}
-{#                                                                    Fluid#}
-{#                                                                </a>#}
-{#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid-vertical.html">#}
-{#                                                                    Fluid vertical#}
-{#                                                                </a>#}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <a class="dropdown-item" href="#">
+                                            用户管理
+                                        </a>
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-boxed.html">#}
+                                        {#                                                                    Boxed#}
+                                        {#                                                                    <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical.html">#}
+                                        {#                                                                    Vertical#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item"#}
+                                        {#                                                                   href="/templates/tabler/layout-vertical-transparent.html">#}
+                                        {#                                                                    Vertical transparent#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-vertical-right.html">#}
+                                        {#                                                                    Right vertical#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-condensed.html">#}
+                                        {#                                                                    Condensed#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-combo.html">#}
+                                        {#                                                                    Combined#}
+                                        {#                                                                </a>#}
+                                    </div>
+                                    <div class="dropdown-menu-column">
+                                        <a class="dropdown-item" href="{{ url_for('blog_controller.tags_show_page') }}">
+                                            标签管理
+                                        </a>
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-sticky.html">#}
+                                        {#                                                                    Navbar sticky#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-navbar-overlap.html">#}
+                                        {#                                                                    Navbar overlap#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-rtl.html">#}
+                                        {#                                                                    RTL mode#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid.html">#}
+                                        {#                                                                    Fluid#}
+                                        {#                                                                </a>#}
+                                        {#                                                                <a class="dropdown-item" href="/templates/tabler/layout-fluid-vertical.html">#}
+                                        {#                                                                    Fluid vertical#}
+                                        {#                                                                </a>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         {#                        <li class="nav-item">#}
                         {#                            <a class="nav-link" href="/templates/tabler/icons.html">#}
                         {#                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/ghost -->#}
@@ -749,7 +752,7 @@
                            stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path
                               d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg>
                     </span>
-                                <input type="text" value="" class="form-control" placeholder="Search…"
+                                <input id="search-input" type="text" value="" class="form-control" placeholder="Search…"
                                        aria-label="Search in website">
                             </div>
                         </form>
@@ -779,6 +782,12 @@
             <div class="container-xl">
                 <!-- Content here -->
                 {% block content %}
+                    <div class="col-12">
+                        <div class="card-body markdown">
+                            <div id="searchResults">
+                            </div>
+                        </div>
+                    </div>
                 {% endblock %}
             </div>
         </div>
@@ -832,6 +841,77 @@
 <!-- Tabler Core -->
 <script src="/static/tabler/dist/js/tabler.min.js?1692870487" defer></script>
 <script src="/static/tabler/dist/js/demo.min.js?1692870487" defer></script>
+<script src="/static/jQuery/jquery-3.7.0.js"></script>
+<script src="/static/marked/marked.min.js"></script>
+<script>
+    // 获取搜索框和搜索按钮的DOM元素
+    const searchInput = document.getElementById('search-input');
+    {#const searchButton = document.getElementById('search-btn');#}
+    // 监听搜索框的keydown事件
+    searchInput.addEventListener('keydown', function (event) {
+        // 检查按下的是否是回车键（keyCode 13）
+        if (event.keyCode === 13) {
+            // 阻止默认的表单提交事件
+            event.preventDefault();
+            // 触发搜索按钮的点击事件
+            var query = $('#search-input').val();
+            $.ajax({
+                url: '/search',
+                type: 'GET',
+                data: {query: query},
+                dataType: 'json',
+                success: function (data) {
+                    $('#searchResults').empty(); // 清空当前搜索结果
+                    // 创建新的 HTML 元素并填充数据
+                    var card = $('<div>').addClass('card');
+
+                    if (data.length > 0) {
+                        var hits = data[0]['highlight'];
+                        if ('title' in hits) {
+                            $.each(hits['title'], function (index, value) {
+                                var markdownContent = marked.parse(value); // 使用 marked 转换标题
+                                card.append($('<h1>').addClass('card-title').html('标题：' + (index + 1)));
+                                card.append($('<p>').addClass('card-title').html(markdownContent).css({
+                                    "color": "red",
+                                    "background-color": "yellow",
+                                    "font-size": "16px"
+                                }),)
+                            })
+                        }
+                        if ('content' in hits) {
+                            $.each(hits['content'], function (index, value) {
+                                var markdownContent = marked.parse(value); // 使用 marked 转换标题
+                                card.append($('<h1>').addClass('card-title').html('内容：' + (index + 1)))
+                                card.append($('<p>').addClass('card-title').html(markdownContent).css({
+                                    "color": "red",
+                                    "background-color": "yellow",
+                                    "font-size": "16px"
+                                }),)
+                            })
+
+                        }
+                        if ('tags' in hits) {
+                            $.each(hits['tags'], function (index, value) {
+                                var markdownContent = marked.parse(value); // 使用 marked 转换标题
+                                card.append($('<h1>').addClass('card-title').html('标签：' + (index + 1)))
+                                card.append($('<p>').addClass('card-title').html(markdownContent).css({
+                                    "color": "red",
+                                    "background-color": "yellow",
+                                    "font-size": "16px"
+                                }),)
+                            })
+                        }
+                        // 将新创建的卡片元素添加到 searchResults div 中
+                        $('#searchResults').append(card);
+                    } else {
+                        alert('没有搜索到数据！')
+                    }
+
+                }
+            });
+        }
+    });
+</script>
 {% block js %}
 {% endblock %}
 </body>
