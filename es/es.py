@@ -20,24 +20,25 @@ def sync_data_to_es():
         "properties": {
             "title": {
                 "type": "text",
-                "analyzer": "standard",  # 使用standard分析器
-                "search_analyzer": "standard"  # 搜索时也使用standard分析器
+                "analyzer": "ik_max_word",  # 使用standard分析器
+                "search_analyzer": "ik_max_word"  # 搜索时也使用standard分析器
             },
             "content": {
                 "type": "text",
-                "analyzer": "standard",
-                "search_analyzer": "standard"
-            },
-            "date_posted": {
-                "type": "date"
-            },
-            "updated_at": {
-                "type": "date"
+                "analyzer": "ik_max_word",  # 使用standard分析器
+                "search_analyzer": "ik_max_word"  # 搜索时也使用standard分析器
             },
             "tags": {
                 "type": "text",
-                "analyzer": "standard",
-                "search_analyzer": "standard"
+                "analyzer": "ik_max_word",  # 使用standard分析器
+                "search_analyzer": "ik_max_word"  # 搜索时也使用standard分析器
+            },
+            "date_posted": {
+                "type": "date"
+
+            },
+            "updated_at": {
+                "type": "date"
             }
         }
     }
@@ -57,7 +58,6 @@ def sync_data_to_es():
         es.index(index=index_name, body=doc)
 
 
-
 def search():
     query = request.args.get('query')
     if query:
@@ -75,12 +75,12 @@ def search():
                         "number_of_fragments": 1
                     },
                     "content": {
-                        "fragment_size": 100,
-                        "number_of_fragments": 1
+                        "fragment_size": 300,
+                        "number_of_fragments": 100
                     },
                     "tags": {
                         "fragment_size": 100,
-                        "number_of_fragments": 1
+                        "number_of_fragments": 50
                     }
                 }
             }
