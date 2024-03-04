@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 
 def key_word_check():
     form = checkForm()
-    aa = form.validate_on_submit()
     if form.validate_on_submit():
         # 获取带检测内容
         content = form.text_to_check.data
