@@ -19,7 +19,7 @@ def key_word_check():
         # key_words = form.key_words.data
         key_words = re.split(r'\r\n', form.key_words.data)
         # 首先用正则表达式找出content里面关于匹配“图1、图 1、图1-1、图 1-1、图1a、图 1a”这些字符
-        pattern = re.compile(r'图[ \t]?\d+(?:[ -]\d+|a)?')
+        pattern = re.compile(r'图[ \t]?\d+(?:[ -]\d+|[a-zA-Z])?')
         matches = pattern.findall(content)
         # 然后对matches去重
         content_matches = list(set(matches))
