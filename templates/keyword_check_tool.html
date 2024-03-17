@@ -109,10 +109,10 @@
         var textarea = document.getElementById("text_to_check");
         var text = textarea.value;
         var lines = text.split('\n'); // 按换行符分割文本
-        var highlightedText = lines.map(function (line) {
+        var highlightedText = lines.map(function(line) {
             var regexPattern = keywords.map(escapeRegExp).join('|'); // 构建正则表达式模式
-            var regex = new RegExp('(' + regexPattern + ')', 'g');
-            return line.replace(regex, function (match) {
+            var regex = new RegExp('(' + regexPattern + ')', 'gi');
+            return line.replace(regex, function(match) {
                 return '<span class="highlight">' + match + '</span>';
             });
         }).join('<br>');

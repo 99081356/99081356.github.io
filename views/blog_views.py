@@ -12,7 +12,7 @@ markdown_converter = Markdown()
 
 # 定义首页路由，展示所有博客文章
 def index():
-    sync_data_to_es()
+    # sync_data_to_es()
     per_page = 10  # 每页显示10条记录
     page = request.args.get(get_page_parameter(), type=int, default=1)
     start = (page - 1) * per_page

@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template
 from views.blog_views import index, post, new_post, edit_post, delete_post
 from views.common_tools import key_word_check, text_cmp
 from views.tag_control import tags_show,new_tag, edit_tag, delete_tag
+from views.pdf_reader import pdf_show,get_remote_pdf
 from es.es import search
 
 blog_controller = Blueprint('blog_controller', __name__)
@@ -86,3 +87,13 @@ def delete_tag_page(tag_id):
 def es_search():
     # 调用new_post函数
     return search()
+
+@blog_controller.route('/pdf', methods=['GET', 'POST'])
+def pdf():
+    # 调用new_post函数
+    return pdf_show()
+
+@blog_controller.route('/remote_pdf', methods=['GET', 'POST'])
+def get_pdf():
+    # 调用new_post函数
+    return get_remote_pdf()

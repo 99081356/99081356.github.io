@@ -9,6 +9,8 @@ from es.es import sync_data_to_es
 
 # 创建Flask应用
 app = Flask(__name__)
+app.config['STATIC_URL'] = '/static/'
+app.config['STATIC_DIRS'] = [os.path.join('.', 'static')]
 # 设置密钥
 app.config['SECRET_KEY'] = '3.1415926'
 
